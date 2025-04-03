@@ -1,0 +1,22 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@apollo/server": "^4.11.3",
+    "@graphql-tools/load-files": "^7.0.1",
+    "@graphql-tools/schema": "^10.0.23",
+    "graphql": "^16.10.0",
+    "mongodb": "5.5",
+    "mongoose": "^8.13.1",
+    "nodemon": "^3.1.9"
+  }
+}
