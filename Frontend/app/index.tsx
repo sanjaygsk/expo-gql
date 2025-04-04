@@ -6,13 +6,11 @@ import { initialWindowMetrics, SafeAreaProvider } from "react-native-safe-area-c
 
 export default function HomeScreen() {
   return (
-    <SafeAreaProvider initialMetrics={initialWindowMetrics}>
-      <View style={{ flex: 1 }}>
-        <ApolloProvider client={client}>
-          <Navigator />
-        </ApolloProvider>
-      </View>
-    </SafeAreaProvider>
+      <SafeAreaProvider initialMetrics={initialWindowMetrics}>
+          <ApolloProvider client={client}>
+            <Navigator />
+          </ApolloProvider>
+      </SafeAreaProvider>
   );
 }
 

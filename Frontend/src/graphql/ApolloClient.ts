@@ -1,7 +1,7 @@
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 
 const client = new ApolloClient({
-  uri: process.env.EXPO_PUBLIC_GRAPHQL_URL,
+  uri: "http://localhost:4000/",
   cache: new InMemoryCache(),
 });
 

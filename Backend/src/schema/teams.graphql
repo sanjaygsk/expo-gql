@@ -1,0 +1,43 @@
+scalar JSON
+
+enum TeamName {
+    MI
+    CSK
+    RCB
+    KKR
+    DC
+    SRH
+    PBKS
+    RR
+    GT
+    LSG
+}
+  
+enum MatchStatus {
+  SCHEDULED
+  COMPLETED
+  CANCELLED
+}
+
+type Team {
+  id: ID!
+  name: TeamName!
+}
+
+type Match {
+  id: ID!
+  team1: Team!
+  team2: Team!
+  date: String!
+  status: MatchStatus!
+}
+
+type Query {
+  getAllTeams: [Team!]!
+  getAllMatches: [Match!]!
+}
+
+type Mutation {
+  createTeams: [Team!]!
+  createMatches: [Match!]!
+}
