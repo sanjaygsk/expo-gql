@@ -1,6 +1,6 @@
 export const Query = {
     // Fetch all items with optional pagination
-    getAll: async (_, { model, limit, offset }) => {
+    getAll: async ({ model, limit, offset }) => {
       const query = model.find();
       if (limit) query.limit(limit);
       if (offset) query.skip(offset);
@@ -8,12 +8,12 @@ export const Query = {
     },
   
     // Fetch a single item by ID
-    getById: async (_, { model, id }) => {
+    getById: async ({ model, id }) => {
       return model.findById(id);
     },
   
     // Search items based on a query string
-    search: async (_, { model, searchField, query, limit, offset }) => {
+    search: async ({ model, searchField, query, limit, offset }) => {
       const searchQuery = {};
       if (query) {
         searchQuery[searchField] = { $regex: query, $options: "i" }; // Case-insensitive search
@@ -25,7 +25,7 @@ export const Query = {
     },
 
     // Fetch items with sorting
-    getSorted: async (_, { model, sortField, sortOrder = "asc", limit, offset }) => {
+    getSorted: async ({ model, sortField, sortOrder = "asc", limit, offset }) => {
         const sortQuery = {};
         sortQuery[sortField] = sortOrder === "asc" ? 1 : -1; // Ascending or descending
         const query = model.find().sort(sortQuery);
@@ -35,7 +35,7 @@ export const Query = {
     },
 
      // Count the total number of documents
-    count: async (_, { model, filter }) => {
+    count: async ({ model, filter }) => {
         const query = filter || {}; // Optional filter for counting specific documents
         return model.countDocuments(query);
     },

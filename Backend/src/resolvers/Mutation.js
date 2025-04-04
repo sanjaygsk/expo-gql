@@ -1,12 +1,12 @@
 export const Mutation = {
   // Create a new data (POST)
-  create: async (_, { model, input }) => {
+  create: async ({ model, input }) => {
     try {
       const newItem = new model(input);
       await newItem.save();
       return {
         status: "success",
-        message: "Item created successfully",
+        message: "Data created successfully",
         item: newItem,
       };
     } catch (error) {
@@ -18,7 +18,7 @@ export const Mutation = {
   },
 
   // Update an existing data (UPDATE)
-  update: async (_, { model, id, input }) => {
+  update: async ({ model, id, input }) => {
     try {
       const updatedItem = await model.findByIdAndUpdate(id, input, {
         new: true, // Return the updated document
@@ -26,12 +26,12 @@ export const Mutation = {
       if (!updatedItem) {
         return {
           status: "error",
-          message: "Item not found",
+          message: "Data not found",
         };
       }
       return {
         status: "success",
-        message: "Item updated successfully",
+        message: "Data updated successfully",
         item: updatedItem,
       };
     } catch (error) {
@@ -43,19 +43,19 @@ export const Mutation = {
   },
 
   // Delete a single data (DELETE)
-  delete: async (_, { model, id }) => {
+  delete: async ({ model, id }) => {
     try {
-      const deletedItem = await model.findByIdAndDelete(id);
-      if (!deletedItem) {
+      const deletedData = await model.findByIdAndDelete(id);
+      if (!deletedData) {
         return {
           status: "error",
-          message: "Item not found",
+          message: "Data not found",
         };
       }
       return {
         status: "success",
-        message: "Item deleted successfully",
-        item: deletedItem,
+        message: "data deleted successfully",
+        item: deletedData,
       };
     } catch (error) {
       return {
@@ -66,7 +66,7 @@ export const Mutation = {
   },
 
   // Delete multiple data (MULTI-DELETE)
-  deleteMany: async (_, { model, filter }) => {
+  deleteMany: async ({ model, filter }) => {
     try {
       const result = await model.deleteMany(filter);
       return {
