@@ -15,6 +15,7 @@
     "@graphql-tools/load-files": "^7.0.1",
     "@graphql-tools/schema": "^10.0.23",
     "graphql": "^16.10.0",
+    "graphql-type-json": "^0.3.2",
     "mongodb": "5.5",
     "mongoose": "^8.13.1",
     "nodemon": "^3.1.9"
